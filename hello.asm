@@ -3,9 +3,11 @@
   ; Code to link: ld hello.o -o hello
   ; and to run is just ./hello
 
+  ; we're using sys_write system call below. 
 
-section .data
-  text db "Hello, World!", 10  ; 10 represents a new line
+
+section .data ; static compile time data. 
+  text db "Hello, World!", 10  ; 10 represents a new line. "text" is a reference (memory address). Can be called jim. 
 
 
 section .text
@@ -13,11 +15,11 @@ section .text
 
 _start:
   mov rax, 1
-  mov rdi, 1
-  mov rsi, text
-  mov rdx, 14 ; number of bytes written to standard output. 
-  syscall
+  mov rdi, 1 
+  mov rsi, text  
+  mov rdx, 14  
+  syscall 
 
-  mov rax, 60
-  mov rdi, 0 
+  mov rax, 60 ; sysexit system call has id of 60
+  mov rdi, 0 ; error code : 0 = no error
   syscall
