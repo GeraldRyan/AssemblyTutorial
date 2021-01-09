@@ -28,3 +28,4 @@ _printRAXDigit:
   syscall
   ret ;;
 
+_printString
