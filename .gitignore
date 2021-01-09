@@ -1,2 +1,5 @@
 # ignore object files and executables
 *.o
+hello
+stack
+get_ui
