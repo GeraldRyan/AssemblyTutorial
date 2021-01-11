@@ -1,8 +1,9 @@
 ;hello.asm
-section.data
-  msg db "Hello, World", 0
+section .data
+  msg db "Hello, World",0
 
 section .bss
+section .text
   global main
 
 main:
