@@ -1,25 +1,16 @@
-  ; Semicolons represent comments. 
-  ; Code to compile nasm -f elf64 -o hello.o hello.asm
-  ; Code to link: ld hello.o -o hello
-  ; and to run is just ./hello
+;hello.asm
+section.data
+  msg db "Hello, World", 0
 
-  ; we're using sys_write system call below. 
+section .bss
+  global main
 
-
-section .data ; static compile time data. 
-  text db "Hello, World!", 10  ; 10 represents a new line. "text" is a reference (memory address). Can be called jim. 
-
-
-section .text
-  global _start
-
-_start:
-  mov rax, 1
-  mov rdi, 1 
-  mov rsi, text  
-  mov rdx, 14  
-  syscall 
-
-  mov rax, 60 ; sysexit system call has id of 60
-  mov rdi, 0 ; error code : 0 = no error
-  syscall
+main:
+  mov rax, 1; 1 = write
+  mov rdi, 1 ; 1 = stdout
+  mov rsi, msg ; string to display in rsi
+  mov rdx, 12 ; length of string w/o 0
+  syscall ; display string
+  mov rax, 60 ; 60 = exit
+  mov rdi, 0 ; 0 = success code
+  syscall ; quit

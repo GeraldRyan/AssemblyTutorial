@@ -19,28 +19,12 @@ _start:
   mov rdi, 0 
   syscall
 
-_getName:
+_getName: ; differs from print name by one simple value expressed twice. 
   mov rax, 0
   mov rdi, 0
   mov rsi, name
   mov rdx, 16
   syscall 
-  ret
-
-_printText1:
-    mov rax, 1
-    mov rdi, 1
-    mov rsi, text1
-    mov rdx, 19
-    syscall
-    ret
-
-_printText2:
-  mov rax, 1
-  mov rdi, 1
-  mov rsi, text2
-  mov rdx, 7
-  syscall
   ret
 
 _printName:
@@ -50,4 +34,22 @@ _printName:
   mov rdx, 16
   syscall
   ret
+
+_printText1:
+  mov rax, 1
+  mov rdi, 1
+  mov rsi, text1
+  mov rdx, 19
+  syscall
+  ret
+
+_printText2:
+  mov rax, 1
+  mov rdi, 1
+  mov rsi, text2
+  mov rdx, 7
+  syscall
+  ret
+
+
 

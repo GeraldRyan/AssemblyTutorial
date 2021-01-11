@@ -2,7 +2,11 @@
 
 section .data ; static compile time data. 
   text db "Hello, World!", 10, 0
-  text2 db "World!!", 10, 0
+  text2 db "What is your name!!", 10, 0
+
+
+section .bss
+    name resb 16
 
 
 section .text
@@ -14,6 +18,9 @@ _start:
 
   mov rax, text2
   call _printstring
+
+  call _getName
+  call _printName
 
   mov rax, 60 ; sysexit system call has id of 60
   mov rdi, 0 ; error code : 0 = no error
@@ -37,6 +44,22 @@ _printloop: ; function label
   mov rdi, 1                ;  1 = stdout
   pop rsi                   ;  register source index, where the buffer goes. rsi is not being popped. the stack is being popped into rsi. 
   mov rdx, rbx              ;  size of buffer in bytes
+  syscall
+  ret
+
+_getName:
+  mov rax, 0
+  mov rdi, 0
+  mov rsi, name
+  mov rdx, 16
+  syscall 
+  ret
+
+_printName:
+  mov rax, 1
+  mov rdi, 1
+  mov rsi, name
+  mov rdx, 16
   syscall
   ret
 
