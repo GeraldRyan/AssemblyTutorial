@@ -3,7 +3,7 @@ section .data
   msg db "Hello, World",0
 
 section .bss
-section .text
+section .text 
   global main
 
 main:
