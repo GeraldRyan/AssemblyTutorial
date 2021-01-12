@@ -1,7 +1,7 @@
-#makefile for hello2.asm
-hello2: hello2.o
-	gcc -o hello2 hello2.o -no-pie
+#makefile for alive.asm
+alive: alive.o
+	gcc -o alive alive.o -no-pie
 
-hello2.o: hello2.asm
-	nasm -f elf64 -g -F dwarf hello2.asm -l hello2.lst
+alive.o: alive.asm
+	nasm -f elf64 -g -F dwarf alive.asm -l alive.lst
 
